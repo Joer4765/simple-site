@@ -130,8 +130,6 @@ Next, we create a _workflow_ for the deployment.
 
 ![image](https://github.com/Joer4765/simple-site/assets/49815002/ef98e897-649b-4350-87bb-7ff0d36c15e9)
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/f5505b73-bc61-4304-8b8a-c54e3d87dd4e)
-
 * Click on **set up workflow yourself**.
 
 ![image](https://github.com/Joer4765/simple-site/assets/49815002/6f7bfd68-d42f-4ccd-abdb-a5ade717e954)
