@@ -8,39 +8,41 @@ To public our website, we wil be using AWS S3 Bucket service. To configure it, t
 
 * Go to **S3** and click **Create bucket**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/df2d30db-6965-463a-8da3-2ba9e7d1c80d)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/22c70d8c-9f4a-40b5-8307-3d4274ec115b)
 
 * Select a region. I recommend the American ones because they are the cheapest, but decide for yourself based on your needs. 
 * Give the bucket a name.
+
+![image](https://github.com/Joer4765/simple-site/assets/49815002/abe7e19f-5df5-4874-8d70-20b709dca8f8)
+
 * Scroll down and uncheck **Block all public access**. So that we can host our public static website.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/2f25f369-63eb-4ec1-b0ee-5e25cdf1a047)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/46956049-1311-4cf4-807a-64e1e5291c31)
 
 * Scroll to the bottom and press **Create bucket**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/d534e829-0fc7-4664-a7c8-4cd95637e9ea)
-
 ### Step 2. Pre-settings for the static website
-
-![image](https://github.com/Joer4765/simplesite/assets/49815002/83964146-6cd1-4017-b95a-70f443581cdb)
 
 * In the list of buckets, select the created bucket and go to **Properties** tab.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/df9d8a81-d49c-4202-bbf9-c705ac0a70a6)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/55f4aa6d-de1f-4077-ba83-4f6d9b7310cc)
 
 * Scroll all the way down and find **Static website hosting** section. Click on **Edit**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/999f18fb-c2a7-474c-85c2-07f23dcd184e)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/47ab3bb6-b107-4959-a6e3-7acc2f067977)
 
 * Change the setting to **Enable**, enter the index document name and **Save changes**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/7ad9f0ba-8dca-498f-aaa3-265ce2a66ca7)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/49ddd9e9-ba8f-4cc0-8fd2-5b8671e13d84)
 
 ### Step 3. Adding a bucket policy
 
 To make the objects in the bucket publicly readable, we must write a bucket policy that grants everyone `s3:GetObject` permission.
 
-* Scroll up and find **Bucket Policy**. Choose **Edit**
+* Under **Properties** tab find **Bucket Policy**. Choose **Edit**
+
+![image](https://github.com/Joer4765/simple-site/assets/49815002/b79fdf9e-49d5-4da0-9d7d-4cd9f4152ddd)
+
 * To grant public read access for your website, copy the following bucket policy, and paste it in the **Bucket policy editor**.
 
 ```json
@@ -72,37 +74,35 @@ Now what we need to do is to create a new **IAM** user. This user will give cont
 * Navigate to **IAM** and from the menu on the left, click on **Users**.
 * Choose **Create User** to create a new user.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/087d7b4e-71e3-441f-8797-9fc3ac118a5c)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/45b71018-0e46-4746-af03-0c6e92c4bf8e)
 
-* Give your user a name (e.g. _devopsuser_).
+* Give your user a name.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/6646f2bf-6c64-4559-bc33-e62cdc53721a)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/1af47894-f9f1-4162-8ccb-db058dd86f3f)
 
-* Click **Next**. Select **Attach policies directly**. From the provided list, select **AmazonS3FullAccess** (_this gives devopsuser full access to S3 bucket_).
+* Click **Next**. Select **Attach policies directly**. From the provided list, select **AmazonS3FullAccess** (_this gives our suser full access to S3 bucket_).
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/72a9a799-fc43-4421-8d53-450b246fc2f1)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/693bd41e-b080-42e2-8586-3b338756e624)
 
 * Go **Next**. There you can add a tag and review your user. Then hit **Create user**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/b7af18e3-1c03-48b1-99d4-3f617b1aaee7)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/9f50459e-a70b-4550-b3ec-f30bbe0d932c)
 
 ## Сreating access key
 
 * We need to create an access key to send programmatic calls to AWS. Select the user in the user list and proceed to **Security credentials tab** and click **Create access key**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/9f6adc75-f2a0-483d-9660-8881242a3f0f)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/68c75e79-cb2c-4a05-ae97-c5cce5e337ca)
 
 * Select **Command Line Interface (CLI)**
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/cb28e337-355c-46c4-995b-2e969111be21)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/0f3e51fd-3c46-40c0-8b91-0634faa89a60)
 
 * You can add a description to recognize your key later. After that hit **Create access key**. 
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/bf02c881-87ab-4cd4-8eca-02dad0ed7464)
-
 * Once the process is complete, you will be able to download your user credentials. **Remember to keep it private**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/b4817352-98f3-4458-92ee-9def87e6f011)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/c51fab7a-33a7-4533-aaec-743baf0a89d4)
 
 ## Passing the credentials to github
 
@@ -110,15 +110,15 @@ Now that we have created the user, we need to use the credentials in our github 
 
 * In the github repository click on **Settings**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/f1420b0f-798f-4b3f-bc8e-df910ea96dbc)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/2ad4d0c3-6e0b-4d65-a1e3-6d71f58d4c9d)
 
 * From the left hand menu, scroll down to **Security** and click on **Secrets and variables**, When the dropdown opens, select **Actions**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/441bb366-7e3b-4e7f-b1e3-3f3649e46fe5)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/d47c94f7-83d9-4369-b2c6-87da1a642e1c)
 
 * Now we are going to add our user credentials to this repository. Click on **New repository** secret and add your **AWS_ACCESS_KEY_ID**. Repeat the action for **AWS_SECRET_ACCESS_KEY**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/223ede74-befb-4230-b0f2-88f82da01d09)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/d4ec7eda-e010-4879-8a07-4c26af4025f1)
 
 We are doing this because it is best practice to not expose your security keys to the public. 
 
@@ -126,17 +126,15 @@ We are doing this because it is best practice to not expose your security keys t
 
 Next, we create a _workflow_ for the deployment.
 
-* Select the **Actions** tab.
+* Select the **Actions** tab and click on **New workflow**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/d5cf8d7b-5a31-4808-a03c-03f5809835f0)
-
-* Click on **New workflow**.
+![image](https://github.com/Joer4765/simple-site/assets/49815002/ef98e897-649b-4350-87bb-7ff0d36c15e9)
 
 ![image](https://github.com/Joer4765/simplesite/assets/49815002/f5505b73-bc61-4304-8b8a-c54e3d87dd4e)
 
 * Click on **set up workflow yourself**.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/194e4a47-53df-4cd2-8e25-e63d792c8ceb)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/6f7bfd68-d42f-4ccd-abdb-a5ade717e954)
 
 * Next, insert this script into your workspace.
 
@@ -174,13 +172,11 @@ _This workflow says that once you push your code to the main branch the followin
 
 Navigate to Actions to see your pipeline in action.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/f8032f09-067c-444b-8f21-5c79cf3cfc7b)
-
 At the end of a successful build, it should look like this:
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/c4c0035d-abd3-49a3-bf71-433162f5149f)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/87f7bfef-6c17-4775-b272-344d233a5998)
 
 Check your S3 bucket and you should see your deployed site.
 
-![image](https://github.com/Joer4765/simplesite/assets/49815002/afe9fbf2-27cf-4062-8868-ac7346784fe2)
+![image](https://github.com/Joer4765/simple-site/assets/49815002/f873a635-8073-4858-8991-952ef95c71ea)
 
