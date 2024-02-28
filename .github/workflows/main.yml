@@ -20,11 +20,21 @@ jobs:
           SOURCE_DIR: ./main
 
   readme-to-pdf:
-    runs-on: pandoc/latex
+    runs-on: ubuntu-latest
+
     steps:
-      - run: pandoc ./README.md -s -o ./README.pdf
-      - name: upload artifact
+      - uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: sudo apt update && sudo apt install pandoc
+
+      - name: Convert README.md to PDF
+        uses: docker://pandoc/latex:latest  # Use 'pandoc/core' for simpler conversions
+        with:
+          args: --from markdown --to pdf README.md -o README.pdf
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: readme.pdf
-          path: ./README.pdf
+          name: README.pdf
+          path: README.pdf
