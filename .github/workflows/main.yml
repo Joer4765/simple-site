@@ -18,3 +18,13 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: ./main
+
+  readme-to-pdf:
+    runs-on: pandoc/latex
+    steps:
+      - run: pandoc ./README.md -s -o ./README.pdf
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: readme.pdf
+          path: ./README.pdf
