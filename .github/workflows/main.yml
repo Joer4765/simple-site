@@ -29,7 +29,7 @@ jobs:
         run: sudo apt update && sudo apt install pandoc
 
       - name: Convert README.md to PDF
-        uses: docker://pandoc/latex:latest  # Use 'pandoc/core' for simpler conversions
+        uses: docker://pandoc/core:latest  # Use 'pandoc/core' for simpler conversions
         with:
           args: --from markdown --to pdf README.md -o README.pdf
 
