@@ -88,7 +88,7 @@ Now what we need to do is to create a new **IAM** user. This user will give cont
 
 ![image](https://github.com/Joer4765/simple-site/assets/49815002/9f50459e-a70b-4550-b3ec-f30bbe0d932c)
 
-## Сreating access key
+## Creating access key
 
 * We need to create an access key to send programmatic calls to AWS. Select the user in the user list and proceed to **Security credentials tab** and click **Create access key**.
 
